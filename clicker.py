@@ -5,7 +5,7 @@ from pynput.mouse import Button, Controller
 from pynput.keyboard import Listener, KeyCode
 
 # delay of clicks
-delay = 0.045  # 22.22 cps
+delay = 0.045  # 0.055 = 18.18 cps | 0.05 = 20 cps  | 0.045 = 22.22 cps | 0.04 = 25 cps
 # mouse button to be clicked
 button = Button.left
 # key to start / pause clicking
