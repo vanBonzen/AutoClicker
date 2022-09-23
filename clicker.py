@@ -5,7 +5,7 @@ from pynput.mouse import Button, Controller
 from pynput.keyboard import Listener, KeyCode
 
 # delay of clicks
-delay = 0.045 # 22.22 cps
+delay = 0.045  # 22.22 cps
 # mouse button to be clicked
 button = Button.left
 # key to start / pause clicking
@@ -13,9 +13,11 @@ start_stop_key = KeyCode(char='a')
 # key to end autoclicking
 stop_key = KeyCode(char='b')
 
-# ClickMouse Class
+
 class ClickMouse(threading.Thread):
-    # Constructor
+    '''ClickMouse class'''
+    # constructor
+
     def __init__(self, delay, button):
         super(ClickMouse, self).__init__()
         self.delay = delay
@@ -52,8 +54,9 @@ click_thread = ClickMouse(delay, button)
 # start thread
 click_thread.start()
 
-# on key press function
+
 def on_press(key):
+    '''key listener function'''
     # start / stop clicking
     if key == start_stop_key:
         # stop clicking
