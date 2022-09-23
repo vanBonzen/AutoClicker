@@ -16,30 +16,30 @@ stop_key = KeyCode(char='b')
 
 class ClickMouse(threading.Thread):
     '''ClickMouse class'''
-    # constructor
 
     def __init__(self, delay, button):
+        '''constructor'''
         super(ClickMouse, self).__init__()
         self.delay = delay
         self.button = button
         self.running = False
         self.program_running = True
 
-    # start clicking
     def start_clicking(self):
+        '''start clicking'''
         self.running = True
 
-    # stop clicking
     def stop_clicking(self):
+        '''stop clicking'''
         self.running = False
 
-    # exit function
     def exit(self):
+        '''exit programm'''
         self.stop_clicking()
         self.program_running = False
 
-    # run function
     def run(self):
+        '''run programm'''
         while self.program_running:
             while self.running:
                 mouse.click(self.button)
@@ -57,20 +57,20 @@ click_thread.start()
 
 def on_press(key):
     '''key listener function'''
-    # start / stop clicking
     if key == start_stop_key:
-        # stop clicking
+        # start / stop clicking
         if click_thread.running:
+            # stop clicking
             click_thread.stop_clicking()
-        # start clicking
         else:
+            # start clicking
             click_thread.start_clicking()
-    # end clicking
     elif key == stop_key:
+        # end programm
         click_thread.exit()
         listener.stop()
 
 
-# key listener
 with Listener(on_press=on_press) as listener:
+    '''key listener'''
     listener.join()
